@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 const port = 3000;
-const connectionString = 'mongodb+srv://root:root@cluster0.c7fabeg.mongodb.net/my-shop';
+const connectionString = '';
 
 const UserModel = require('./models/UserModel');
 
