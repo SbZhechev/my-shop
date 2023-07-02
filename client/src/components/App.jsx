@@ -1,51 +1,35 @@
 import { useState } from 'react';
-import { handleLogin } from '../services/AuthenticationService';
+import { AUTHENTICATION_FORM_TYPES } from '../utilites/constants';
+import AuthenticationForm from './authentication/AuthenticationForm';
 import './App.css';
+import { handleLogin } from '../services/AuthenticationService';
+import { handleSignUp } from '../services/AuthenticationService';
 
 function App() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [feedbackMessage, setFeedbackMessage] = useState('');
-
-  const handleClick = async () => {
-    try {
-      let result = (await handleLogin({ email, password })).data;
-      setFeedbackMessage(result);
-    } catch (err) {
-      setFeedbackMessage(err.response.data);
-    }
-  }
+  const [activeFormType, setActiveFormType] = useState(AUTHENTICATION_FORM_TYPES.LOGIN_FORM);
 
   return (
     <section>
       <h1>Welcome to My Shop!</h1>
-
-      <form className='form'>
-        <fieldset className='fieldset'>
-          <legend>Login</legend>
-          <label htmlFor='email'>
-            Email: 
-            <input 
-              id="email" 
-              type='email' 
-              placeholder='example@gmail.com' 
-              value={email} 
-              onChange={(event) => setEmail(event.target.value)}
-            ></input>
-          </label>
-          <label htmlFor='password'>
-            Password:
-            <input 
-              id="password" 
-              type='password' 
-              value={password} 
-              onChange={(event => setPassword(event.target.value))}
-            ></input>
-          </label>
-          <button type='button' onClick={handleClick}>Login</button>
-          { feedbackMessage ? <p>{feedbackMessage}</p> : null }
-        </fieldset>
-      </form>
+      <div className='formTypes'>
+        <button 
+          className={activeFormType === AUTHENTICATION_FORM_TYPES.LOGIN_FORM ? 'active' : ''}
+          onClick={() => setActiveFormType(AUTHENTICATION_FORM_TYPES.LOGIN_FORM)}
+        >
+          Login
+        </button>
+        <button 
+          className={activeFormType === AUTHENTICATION_FORM_TYPES.SIGN_UP_FORM ? 'active' : ''}
+          onClick={() => setActiveFormType(AUTHENTICATION_FORM_TYPES.SIGN_UP_FORM)}
+        >
+          Sign Up
+        </button>
+      </div>
+      { activeFormType === AUTHENTICATION_FORM_TYPES.LOGIN_FORM ?
+        <AuthenticationForm key="login" legend="Login" action={handleLogin} actionButtonText="Login" />
+        :
+        <AuthenticationForm key="sign-up" legend="Sign Up" action={handleSignUp} actionButtonText="Sign Up" />
+      }
     </section>
   );
 }

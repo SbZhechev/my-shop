@@ -1,0 +1,6 @@
+const AUTHENTICATION_FORM_TYPES = Object.freeze({
+  LOGIN_FORM: 0,
+  SIGN_UP_FORM: 1
+});
+
+export { AUTHENTICATION_FORM_TYPES };

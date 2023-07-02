@@ -2,18 +2,18 @@ section {
   text-align: center;
 }
 
-.form {
-  max-width: 600px;
-  margin: 0 auto;
+button {
+  background-color: var(--inactive-background-color);
+  color: var(--inactive-font-color);
+  cursor: pointer;
 }
 
-.fieldset {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-}
-
-input {
+button + button {
   margin-left: 1rem;
+}
+
+button:hover,
+button.active {
+  background-color: var(--active-background-color);
+  color: var(--active-font-color);
 }
