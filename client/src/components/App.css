@@ -1,3 +1,14 @@
-section {
-  text-align: center;
+.section {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--active-background-color);
+  color: #cccccc;
+}
+
+.section__heading {
+  margin: 0;
+  font-size: clamp(1rem, 5vw, 5rem);
+  font-weight: 900;
 }
