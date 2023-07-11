@@ -45,16 +45,16 @@ function AuthenticationForm({ legend, action, actionButtonText }) {
               onChange={(event => setPassword(event.target.value))}
             ></input>
           </label>
-          <button type='button' onClick={handleClick}>{actionButtonText}</button>
-          { feedbackMessage.message.length > 0 ?
-            <p className={`feedbackMessage ${feedbackMessage.isError ? "error" : ''}`}>
-              {feedbackMessage.message}
-            </p>
-            :
-            null
-          }
+          <button type='button' onClick={handleClick} className='active'>{actionButtonText}</button>
         </fieldset>
       </form>
+      { feedbackMessage.message.length > 0 ?
+        <p className={`feedbackMessage ${feedbackMessage.isError ? "error" : ''}`}>
+          {feedbackMessage.message}
+        </p>
+        :
+        null
+      }
     </section>
   );
 };

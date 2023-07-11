@@ -1,7 +1,7 @@
 :root {
   --active-font-color: white;
-  --active-background-color: black;
-  --inactive-font-color: black;
+  --active-background-color: #00695c;
+  --inactive-font-color: #00695c;
   --inactive-background-color: white;
 }
 
