@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from '../utility/Button';
 import './authenticationForm.css';
 
 function AuthenticationForm({ legend, action, actionButtonText }) {
@@ -24,9 +25,9 @@ function AuthenticationForm({ legend, action, actionButtonText }) {
   return (
     <section>
       <form className='form'>
-        <fieldset className='fieldset'>
-          <legend>{legend}</legend>
-          <label htmlFor='email'>
+        <fieldset className='form__fieldset'>
+          <legend className='form__legend'>{legend}</legend>
+          <label htmlFor='email' className='form__label'>
             Email: 
             <input 
               id="email" 
@@ -34,27 +35,36 @@ function AuthenticationForm({ legend, action, actionButtonText }) {
               placeholder='example@gmail.com' 
               value={email} 
               onChange={(event) => setEmail(event.target.value)}
+              className='form__input'
             ></input>
           </label>
-          <label htmlFor='password'>
+          <label htmlFor='password' className='form__label'>
             Password:
             <input 
               id="password" 
               type='password' 
               value={password} 
               onChange={(event => setPassword(event.target.value))}
+              className='form__input'
             ></input>
           </label>
-          <button type='button' onClick={handleClick} className='active'>{actionButtonText}</button>
+          <div className='form__actions'>
+            <Button action={handleClick} active={true}>{actionButtonText}</Button>
+            { feedbackMessage.message.length > 0 ?
+              <p 
+                className={`
+                form__actions__feedbackMessage 
+                  ${feedbackMessage.isError ? "form__actions__feedbackMessage--error" : ''}
+                `}
+              >
+                {feedbackMessage.message}
+              </p>
+              :
+              null
+            }
+          </div>
         </fieldset>
       </form>
-      { feedbackMessage.message.length > 0 ?
-        <p className={`feedbackMessage ${feedbackMessage.isError ? "error" : ''}`}>
-          {feedbackMessage.message}
-        </p>
-        :
-        null
-      }
     </section>
   );
 };

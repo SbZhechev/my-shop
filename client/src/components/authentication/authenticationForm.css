@@ -5,25 +5,30 @@
   margin-top: 1rem;
 }
 
-.fieldset {
+.form__fieldset {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   align-items: start;
 }
 
-input {
+.form__input {
   margin-left: 1rem;
 }
 
-.feedbackMessage {
- color: green;
+.form__actions {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.feedbackMessage.error {
+.form__actions__feedbackMessage {
+  width: 80%;
+  color: green;
+  margin: 0;
+}
+
+.form__actions__feedbackMessage--error {
   color: red;
-}
-
-button.active:hover {
-  filter: brightness(90%);
 }

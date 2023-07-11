@@ -1,0 +1,25 @@
+.MS-Button {
+  background-color: var(--inactive-background-color);
+  color: var(--inactive-font-color);
+  cursor: pointer;
+  border: 1px solid var(--inactive-font-color);
+  border-radius: 20px;
+  padding: 0.5em 1em;
+}
+
+.MS-Button + .MS-Button {
+  margin-left: 1rem;
+}
+
+.MS-Button:hover,
+.MS-Button:focus,     
+.MS-Button--active {
+  background-color: var(--active-background-color);
+  color: var(--active-font-color);
+  border: 1px solid var(--active-font-color);
+}
+
+.MS-Button--active:hover,
+.MS-Button--active:focus {
+  filter: brightness(90%);
+}
