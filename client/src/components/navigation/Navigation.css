@@ -1,0 +1,31 @@
+.navigation {
+  width: 100%;
+  background-color: var(--active-background-color);
+  color: #cccccc;
+}
+
+.navigation__list {
+  margin: 0;
+  padding: 1em;
+  background-color: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  gap: 1rem;
+  font-size: clamp(1rem, 1.5rem, 5rem);
+}
+
+.navigation__listItem--last {
+  margin-left: auto;
+}
+
+.navigation__link {
+  text-decoration: none;
+  color: #cccccc;
+}
+
+.navigation__link:hover,
+.navigation__link:focus,
+.navigation__link--active {
+  color: white;
+}
