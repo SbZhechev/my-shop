@@ -1,8 +1,9 @@
 :root {
-  --active-font-color: white;
-  --active-background-color: #00695c;
-  --inactive-font-color: #00695c;
-  --inactive-background-color: white;
+  --active-font-color: #00695c;
+  --active-background-color: white;
+  --inactive-font-color: white;
+  --inactive-background-color: #00695c;
+  --background-main-color: #00695c
 }
 
 html {

@@ -17,7 +17,7 @@ export default function Authentication() {
           Login
         </Button>
         <Button 
-          active={activeFormType === AUTHENTICATION_FORM_TYPES.LOGSIGN_UP_FORMIN_FORM}
+          active={activeFormType === AUTHENTICATION_FORM_TYPES.SIGN_UP_FORM}
           action={() => setActiveFormType(AUTHENTICATION_FORM_TYPES.SIGN_UP_FORM)}
         >
           Sign Up
