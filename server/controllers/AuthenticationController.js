@@ -23,6 +23,11 @@ const handleLogin = async (req, res, next) => {
   if (!user) return res.status(400).send('User does not exist!');
   if (user.password !== password) return res.status(400).send('Wrong password!');
 
+  req.session.user = email;
+  req.session.save(err => {
+    if (err) console.error(err);
+  });
+
   res.status(200).send('Login Successful!');
 };
 

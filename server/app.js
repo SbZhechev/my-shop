@@ -1,9 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config({ path: '../.env'});
+const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 
 const app = express();
 const port = 3030;
+const store = new MongoDBStore({
+  uri: process.env.DB_CONNECTION_STRING,
+  collection: 'sessions'
+});
 
 const AuthenticationRouter = require('./routes/AuthenticationRouter');
 
@@ -15,6 +21,13 @@ app.use((req, res, next) => {
   res.set("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  store: store
+}));
 
 app.use('/authentication', AuthenticationRouter);
 
