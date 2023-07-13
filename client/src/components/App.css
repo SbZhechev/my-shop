@@ -1,8 +1,6 @@
 .section {
   height: 100%;
   text-align: center;
-  background-color: var(--background-main-color);
-  color: #cccccc;
 }
 
 .section__heading {
