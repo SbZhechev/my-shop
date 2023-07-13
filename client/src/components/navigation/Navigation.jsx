@@ -1,18 +1,35 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Navigation.css';
+
 
 export default function Navigation() {
   return (
     <nav className='navigation'>
       <ul className='navigation__list'>
         <li className='nagivation__listItem'>
-          <a className='navigation__link' href='#' title='home page'>Home</a>
+          <NavLink 
+            className={({isActive}) => `navigation__link ${isActive ? 'navigation__link--active' : ''}`} 
+            to={'/'}
+          >
+            Home
+          </NavLink>
         </li>
         <li className='nagivation__listItem'>
-          <a className='navigation__link navigation__link--active' href='#' title='prodcuts page'>Products</a>
+          <NavLink 
+            className={({isActive}) => `navigation__link ${isActive ? 'navigation__link--active' : ''}`}
+            to={'/products'}
+          >
+            Products
+          </NavLink>
         </li>
         <li className='nagivation__listItem navigation__listItem--last'>
-          <a className='navigation__link' href='#' title='login page'>Login</a>
+          <NavLink 
+            className={({isActive}) => `navigation__link ${isActive ? 'navigation__link--active' : ''}`}
+            to={'/signIn'}
+          >
+            Sign In
+          </NavLink>
         </li>
       </ul>
     </nav>
