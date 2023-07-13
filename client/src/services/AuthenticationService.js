@@ -1,11 +1,12 @@
-import Axios from 'axios';
+import axios from 'axios';
 
 const handleLogin = (userData) => {
-  return Axios.post('http://localhost:3030/authentication/login', userData);
+  axios.defaults.withCredentials = true;
+  return axios.post('http://localhost:3030/authentication/login', userData);
 };
 
 const handleSignUp = (userData) => {
-  return Axios.post('http://localhost:3030/authentication/sign-up', userData);
+  return axios.post('http://localhost:3030/authentication/sign-up', userData);
 };
 
 export {
