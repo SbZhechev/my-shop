@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, redirect } from 'react-router-dom';
 import App from './components/App';
 import Authentication from './components/authentication/Authentication';
 import Home from './components/home/Home';
@@ -24,6 +24,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/user',
+        loader: async () => {
+          let user = (await getUser()).data;
+          if (!user) return redirect('/signIn');
+
+          return null;
+        },
         element: <User />
       }
     ]
