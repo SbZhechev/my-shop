@@ -8,8 +8,8 @@ export default function Navigation() {
     <nav className='navigation'>
       <ul className='navigation__list'>
         <li className='nagivation__listItem'>
-          <NavLink 
-            className={({isActive}) => `navigation__link ${isActive ? 'navigation__link--active' : ''}`} 
+          <NavLink
+            className='navigation__link'
             to={'/'}
           >
             Home
@@ -17,7 +17,7 @@ export default function Navigation() {
         </li>
         <li className='nagivation__listItem'>
           <NavLink 
-            className={({isActive}) => `navigation__link ${isActive ? 'navigation__link--active' : ''}`}
+            className='navigation__link'
             to={'/products'}
           >
             Products
@@ -25,7 +25,7 @@ export default function Navigation() {
         </li>
         <li className='nagivation__listItem navigation__listItem--last'>
           <NavLink 
-            className={({isActive}) => `navigation__link ${isActive ? 'navigation__link--active' : ''}`}
+            className='navigation__link'
             to={'/signIn'}
           >
             Sign In

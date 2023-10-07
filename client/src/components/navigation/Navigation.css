@@ -29,11 +29,11 @@
 
 .navigation__link:hover,
 .navigation__link:focus,
-.navigation__link--active {
+.navigation__link.active {
   color: white;
   background-color: black;
 }
 
-.navigation__link--active:hover {
+.navigation__link.active:hover {
   outline: 1px solid black;
 }
