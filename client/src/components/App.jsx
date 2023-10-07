@@ -1,11 +1,13 @@
 import Navigation from './navigation/Navigation';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import './App.css';
 
 function App() {
+  const user = useLoaderData();
+  
   return (
     <section className='section'>
-      <Navigation />
+      <Navigation user={user} />
       <Outlet />
     </section>
   );

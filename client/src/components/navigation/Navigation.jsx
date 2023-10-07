@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './Navigation.css';
 
 
-export default function Navigation() {
+export default function Navigation({ user }) {
   return (
     <nav className='navigation'>
       <ul className='navigation__list'>
@@ -28,7 +28,7 @@ export default function Navigation() {
             className='navigation__link'
             to={'/signIn'}
           >
-            Sign In
+            {user ? user : 'Sign In'}
           </NavLink>
         </li>
       </ul>

@@ -5,11 +5,13 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './components/App';
 import Authentication from './components/authentication/Authentication';
 import Home from './components/home/Home';
+import { getUser } from './services/AuthenticationService';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    loader: async () => (await getUser()).data,
     children: [
       {
         path: '/',
