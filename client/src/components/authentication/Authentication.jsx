@@ -9,7 +9,7 @@ export default function Authentication() {
 
   return (
     <>
-    <div className='formTypes'>
+      <div className='formTypes'>
         <Button 
           active={activeFormType === AUTHENTICATION_FORM_TYPES.LOGIN_FORM}
           action={() => setActiveFormType(AUTHENTICATION_FORM_TYPES.LOGIN_FORM)}

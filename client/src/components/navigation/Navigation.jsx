@@ -24,12 +24,21 @@ export default function Navigation({ user }) {
           </NavLink>
         </li>
         <li className='nagivation__listItem navigation__listItem--last'>
-          <NavLink 
+          { user ?
+            <NavLink 
+              className='navigation__link'
+              to={'/user'}
+            >
+              {user}
+            </NavLink>
+            :
+            <NavLink 
             className='navigation__link'
             to={'/signIn'}
-          >
-            {user ? user : 'Sign In'}
-          </NavLink>
+            >
+              Sign In
+            </NavLink>
+          }
         </li>
       </ul>
     </nav>

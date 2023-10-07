@@ -7,8 +7,8 @@ function App() {
   
   return (
     <section className='section'>
-      <Navigation user={user} />
-      <Outlet />
+      <Navigation user={ user } />
+      <Outlet context={ { user } } />
     </section>
   );
 }
