@@ -3,7 +3,6 @@
   color: var(--inactive-font-color);
   cursor: pointer;
   border: 1px solid var(--inactive-font-color);
-  border-radius: 20px;
   padding: 0.5em 1em;
 }
 
