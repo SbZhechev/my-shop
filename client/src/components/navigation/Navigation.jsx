@@ -15,14 +15,14 @@ export default function Navigation({ user }) {
             Home
           </NavLink>
         </li>
-        <li className='nagivation__listItem'>
+        {/* <li className='nagivation__listItem'>
           <NavLink 
             className='navigation__link'
             to={'/products'}
           >
             Products
           </NavLink>
-        </li>
+        </li> */}
         <li className='nagivation__listItem navigation__listItem--last'>
           { user ?
             <NavLink 
