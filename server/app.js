@@ -32,8 +32,9 @@ app.use(session({
 
 app.use('/authentication', AuthenticationRouter);
 
-app.get('/', (req, res, next) => {
-  res.send('Hello World');
+app.get('/user', (req, res, next) => {
+  let userEmail = req.session.user ? req.session.user.email : null;
+  res.status(200).send(userEmail);
 });
 
 app.listen(port, () => {

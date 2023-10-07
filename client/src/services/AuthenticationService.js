@@ -9,7 +9,12 @@ const handleSignUp = (userData) => {
   return axios.post('http://localhost:3030/authentication/sign-up', userData);
 };
 
+const getUser = () => {
+  return axios.get('http://localhost:3030/user', { withCredentials: true });
+};
+
 export {
   handleLogin,
-  handleSignUp
+  handleSignUp,
+  getUser
 }
