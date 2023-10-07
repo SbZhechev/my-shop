@@ -24,6 +24,7 @@
   color: black;
   border: 1px solid black;
   padding: 0.5em;
+  display: block;
 }
 
 .navigation__link:hover,
