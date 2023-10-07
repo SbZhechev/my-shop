@@ -2,8 +2,3 @@
   height: 100%;
   text-align: center;
 }
-
-.section__heading {
-  font-size: clamp(1.5rem, 5vw, 5rem);
-  font-weight: 900;
-}
