@@ -1,12 +1,15 @@
 const UserModel = require('../models/UserModel');
 
-const handleSignUp = (req, res, next) => {
+const handleSignUp = async (req, res, next) => {
   let email = req.body.email;
   let password = req.body.password;
   if (!email) return res.status(400).send('Email is required!');
   if (!password) return res.status(400).send('Password is required!');
+
+  let user = await UserModel.findByEmail(email);
+  if (user) return res.status(400).send('Email is used already!');
   
-  let user = new UserModel({ email, password });
+  user = new UserModel({ email, password });
 
   user.save().then(() => {
     res.status(200).send('User created!');
