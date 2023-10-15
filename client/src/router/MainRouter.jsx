@@ -4,6 +4,7 @@ import Home from '../components/home/Home';
 import Authentication from '../components/authentication/Authentication';
 import User from '../components/user/User';
 import { getUser } from '../services/AuthenticationService';
+import { handleLogin, handleSignUp } from '../services/AuthenticationService';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,25 @@ const router = createBrowserRouter([
       },
       {
         path: '/signIn',
+        action: async ({ request }) => {
+          let data = await request.formData();
+          let actionType = data.get('actionType');
+          if (actionType === 'login') {
+            try {
+              await handleLogin({ email: data.get('email'), password: data.get('password') });
+              return redirect('/user');
+            } catch (error) {
+              return { isError: true, message: error.response.data };
+            }
+          } else {
+            try {
+              await handleSignUp({ email: data.get('email'), password: data.get('password') });
+              return redirect('/signIn');
+            } catch (error) {
+              return { isError: true, message: error.response.data };
+            }
+          }
+        },
         element: <Authentication />
       },
       {

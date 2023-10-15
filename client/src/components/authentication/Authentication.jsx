@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import AuthenticationForm from './AuthenticationForm';
 import { AUTHENTICATION_FORM_TYPES } from '../../utilites/constants';
 import Button from '../utility/Button';
-import { handleLogin, handleSignUp } from '../../services/AuthenticationService';
 
 export default function Authentication() {
   const [activeFormType, setActiveFormType] = useState(AUTHENTICATION_FORM_TYPES.LOGIN_FORM);
@@ -24,9 +23,9 @@ export default function Authentication() {
         </Button>
       </div>
       { activeFormType === AUTHENTICATION_FORM_TYPES.LOGIN_FORM ?
-        <AuthenticationForm key="login" legend="Login" action={handleLogin} actionButtonText="Login" />
+        <AuthenticationForm key="login" legend="Login" actionButtonText="Login" actionButtonType="login" />
         :
-        <AuthenticationForm key="sign-up" legend="Sign Up" action={handleSignUp} actionButtonText="Sign Up" />
+        <AuthenticationForm key="sign-up" legend="Sign Up" actionButtonText="Sign Up" actionButtonType="signUp" />
       }
     </>
   )

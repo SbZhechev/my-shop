@@ -1,39 +1,26 @@
 import { useState } from 'react';
 import Button from '../utility/Button';
+import { Form, useActionData } from 'react-router-dom';
 import './authenticationForm.css';
 
-function AuthenticationForm({ legend, action, actionButtonText }) {
+function AuthenticationForm({ legend, actionButtonText, actionButtonType }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [feedbackMessage, setFeedbackMessage] = useState({isError: false, message: ''});
-
-  const handleClick = async () => {
-    try {
-      let result = (await action({ email, password })).data;
-      setFeedbackMessage({isError: false, message: result});
-      clearState();
-    } catch (err) {
-      setFeedbackMessage({isError: true, message: err.response.data});
-    }
-  };
-
-  const clearState = () => {
-    setEmail('');
-    setPassword('');
-  };
+  const feedbackMessage = useActionData();
 
   return (
     <section>
-      <form className='form'>
+      <Form className='form' method='post' action="/signIn">
         <fieldset className='form__fieldset'>
           <legend className='form__legend'>{legend}</legend>
           <label htmlFor='email' className='form__label'>
             Email: 
             <input 
-              id="email" 
-              type='email' 
+              id='email' 
+              type='email'
+              name='email'
               placeholder='example@gmail.com' 
-              value={email} 
+              value={email}
               onChange={(event) => setEmail(event.target.value)}
               className='form__input'
             ></input>
@@ -41,16 +28,17 @@ function AuthenticationForm({ legend, action, actionButtonText }) {
           <label htmlFor='password' className='form__label'>
             Password:
             <input 
-              id="password" 
-              type='password' 
+              id='password'
+              type='password'
+              name='password' 
               value={password} 
               onChange={(event => setPassword(event.target.value))}
               className='form__input'
             ></input>
           </label>
           <div className='form__actions'>
-            <Button action={handleClick} active={true}>{actionButtonText}</Button>
-            { feedbackMessage.message.length > 0 ?
+            <Button active={true} type='submit' actionType={actionButtonType}>{actionButtonText}</Button>
+            { feedbackMessage ?
               <p 
                 className={`
                 form__actions__feedbackMessage 
@@ -64,7 +52,7 @@ function AuthenticationForm({ legend, action, actionButtonText }) {
             }
           </div>
         </fieldset>
-      </form>
+      </Form>
     </section>
   );
 };
