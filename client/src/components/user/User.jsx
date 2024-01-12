@@ -6,7 +6,7 @@ export default function User() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(!user) return navigate('/signIn', { replace: true });
+    if(!user) return navigate('login', { replace: true });
   }, [user, navigate]);
 
 

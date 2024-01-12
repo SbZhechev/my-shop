@@ -12,13 +12,13 @@ export default function Authentication({ authenticationFormType }) {
       <div className='formTypes'>
         <Button 
           active={authenticationFormType.key === AUTHENTICATION_FORM_TYPES.LOGIN_FORM.key}
-          action={() => navigate('/auth/login')}
+          action={() => navigate('/login')}
         >
           Login
         </Button>
         <Button 
           active={authenticationFormType.key === AUTHENTICATION_FORM_TYPES.SIGN_UP_FORM.key}
-          action={() => navigate('/auth/signUp')}
+          action={() => navigate('/signUp')}
         >
           Sign Up
         </Button>

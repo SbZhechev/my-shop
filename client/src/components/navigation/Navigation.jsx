@@ -34,7 +34,7 @@ export default function Navigation({ user }) {
             :
             <NavLink 
               className='navigation__link'
-              to={'/auth/login'}
+              to={'login'}
             >
               Sign In
             </NavLink>
