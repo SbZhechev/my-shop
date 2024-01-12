@@ -1,32 +1,33 @@
-import React, { useState } from 'react';
-import AuthenticationForm from './AuthenticationForm';
+import React from 'react';
 import { AUTHENTICATION_FORM_TYPES } from '../../utilites/constants';
 import Button from '../utility/Button';
+import { useNavigate } from 'react-router-dom';
+import AuthenticationForm from './AuthenticationForm';
 
-export default function Authentication() {
-  const [activeFormType, setActiveFormType] = useState(AUTHENTICATION_FORM_TYPES.LOGIN_FORM);
+export default function Authentication({ authenticationFormType }) {
+  const navigate = useNavigate();
 
   return (
     <>
       <div className='formTypes'>
         <Button 
-          active={activeFormType === AUTHENTICATION_FORM_TYPES.LOGIN_FORM}
-          action={() => setActiveFormType(AUTHENTICATION_FORM_TYPES.LOGIN_FORM)}
+          active={authenticationFormType.key === AUTHENTICATION_FORM_TYPES.LOGIN_FORM.key}
+          action={() => navigate('/auth/login')}
         >
           Login
         </Button>
         <Button 
-          active={activeFormType === AUTHENTICATION_FORM_TYPES.SIGN_UP_FORM}
-          action={() => setActiveFormType(AUTHENTICATION_FORM_TYPES.SIGN_UP_FORM)}
+          active={authenticationFormType.key === AUTHENTICATION_FORM_TYPES.SIGN_UP_FORM.key}
+          action={() => navigate('/auth/signUp')}
         >
           Sign Up
         </Button>
       </div>
-      { activeFormType === AUTHENTICATION_FORM_TYPES.LOGIN_FORM ?
-        <AuthenticationForm key="login" legend="Login" actionButtonText="Login" actionButtonType="login" />
-        :
-        <AuthenticationForm key="sign-up" legend="Sign Up" actionButtonText="Sign Up" actionButtonType="signUp" />
-      }
+      <AuthenticationForm 
+        key={authenticationFormType.key} 
+        legend={authenticationFormType.legend}
+        actionButtonText={authenticationFormType.actionButtonText}
+      />
     </>
   )
 }

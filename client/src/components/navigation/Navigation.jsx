@@ -33,8 +33,8 @@ export default function Navigation({ user }) {
             </NavLink>
             :
             <NavLink 
-            className='navigation__link'
-            to={'/signIn'}
+              className='navigation__link'
+              to={'/auth/login'}
             >
               Sign In
             </NavLink>

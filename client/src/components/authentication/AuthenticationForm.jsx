@@ -1,15 +1,12 @@
-import { useState } from 'react';
 import Button from '../utility/Button';
 import { Form, useActionData } from 'react-router-dom';
 import './authenticationForm.css';
 
-function AuthenticationForm({ legend, actionButtonText, actionButtonType }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function AuthenticationForm({ legend, actionButtonText }) {
   const feedbackMessage = useActionData();
 
   return (
-    <Form className='form' method='post' action="/signIn">
+    <Form className='form' method='post'>
       <fieldset className='form__fieldset'>
         <legend className='form__legend'>{legend}</legend>
         <label htmlFor='email' className='form__label'>
@@ -19,8 +16,6 @@ function AuthenticationForm({ legend, actionButtonText, actionButtonType }) {
             type='email'
             name='email'
             placeholder='example@gmail.com' 
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
             className='form__input'
           ></input>
         </label>
@@ -30,13 +25,11 @@ function AuthenticationForm({ legend, actionButtonText, actionButtonType }) {
             id='password'
             type='password'
             name='password' 
-            value={password} 
-            onChange={(event => setPassword(event.target.value))}
             className='form__input'
           ></input>
         </label>
         <div className='form__actions'>
-          <Button active={true} buttonType='submit' actionType={actionButtonType}>{actionButtonText}</Button>
+          <Button active={true} buttonType='submit'>{actionButtonText}</Button>
           { feedbackMessage ?
             <p 
               className={`
