@@ -26,7 +26,7 @@ const signUpRoute = {
       let data = await request.formData();
 
       await handleSignUp({ email: data.get('email'), password: data.get('password') });
-      return redirect('/auth/login');
+      return redirect('/login');
     } catch (error) {
       return { isError: true, message: error.response.data };
     }
